@@ -60,6 +60,9 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.backgroundColor = UIColor.black
         
+        button.addTarget(self, action: #selector(validateMail), for: .touchUpInside)
+    
+        
         self.view.backgroundColor = UIColor.gray
         self.view.grid(child:nView, x: 0, y: 2, height: 4, width: 12)
         nView.grid(child: helloView, x: 3, y: 2, height: 4, width: 6)
@@ -67,5 +70,9 @@ class ViewController: UIViewController {
         self.view.grid(child:password, x: 2, y: 6, height: 0.5, width: 8)
         self.view.grid(child:button, x: 4, y: 7, height: 0.5, width: 4)
         
+    }
+    
+    @objc func validateMail() {
+        self.performSegue(withIdentifier: "ShowSecondVIew", sender: nil)
     }
 }
