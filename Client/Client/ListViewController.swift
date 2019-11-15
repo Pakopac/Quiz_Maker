@@ -17,6 +17,7 @@ class ListViewController: UIViewController {
         label.center = CGPoint(x: 160, y: 284)
         label.textAlignment = NSTextAlignment.center
         label.text = "The List View"
+        
         self.view.addSubview(label)
     }
 

@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.backgroundColor = UIColor.black
         
-        button.addTarget(self, action: #selector(validateMail), for: .touchUpInside)
+        button.addTarget(self, action: #selector(redirectToList), for: .touchUpInside)
     
         
         self.view.backgroundColor = UIColor.gray
@@ -72,7 +72,9 @@ class ViewController: UIViewController {
         
     }
     
-    @objc func validateMail() {
+    @objc func redirectToList(username: UITextField) {
+        print(self)
         self.performSegue(withIdentifier: "ShowSecondVIew", sender: nil)
+    
     }
 }
