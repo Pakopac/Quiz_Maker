@@ -117,7 +117,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     let urlToken = URL(string: "http://edu2.shareyourtime.fr/api/secret")!
                     var requestToken = URLRequest(url: urlToken)
                     let authValue: String? = "Bearer \(token)"
-                    print("token",token)
                     requestToken.setValue(authValue!, forHTTPHeaderField:"Authorization")
                     
                     let taskToken = URLSession.shared.dataTask(with: requestToken) { data, response, error in
@@ -138,7 +137,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                     taskToken.resume()
-                    print(token)
                 }
                 else{
                     DispatchQueue.main.async(execute: {

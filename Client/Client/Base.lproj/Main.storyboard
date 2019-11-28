@@ -55,10 +55,28 @@
                         <viewLayoutGuide key="safeArea" id="C0o-El-Wtd"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Create" id="q9Y-pn-X6n"/>
+                    <connections>
+                        <segue destination="VaD-3Y-5RD" kind="presentation" identifier="toCreateQuestion" id="Waz-4W-bHa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afv-Nb-79T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2547" y="541"/>
+        </scene>
+        <!--Create Question View Controller-->
+        <scene sceneID="nC8-g4-HxD">
+            <objects>
+                <viewController id="VaD-3Y-5RD" customClass="CreateQuestionViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gzK-jx-GIo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="f6S-eO-dt6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q6K-6h-bN6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3279" y="540"/>
         </scene>
         <!--All-->
         <scene sceneID="hWF-jj-ZvG">
