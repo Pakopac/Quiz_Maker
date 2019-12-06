@@ -19,6 +19,8 @@
 		2AA0C24B237EB95D00CBB3B0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0C24A237EB95D00CBB3B0 /* TabBarViewController.swift */; };
 		2AA0C251237EC53000CBB3B0 /* CreateQuizzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0C250237EC53000CBB3B0 /* CreateQuizzViewController.swift */; };
 		2AB482E8238FCC470040AD56 /* CreateQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB482E7238FCC470040AD56 /* CreateQuestionViewController.swift */; };
+		3810F621239A92E300751531 /* AuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3810F620239A92E300751531 /* AuthorViewController.swift */; };
+		3810F623239ACB7200751531 /* QuizzFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3810F622239ACB7200751531 /* QuizzFinishedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		2AA0C24A237EB95D00CBB3B0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2AA0C250237EC53000CBB3B0 /* CreateQuizzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizzViewController.swift; sourceTree = "<group>"; };
 		2AB482E7238FCC470040AD56 /* CreateQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewController.swift; sourceTree = "<group>"; };
+		3810F620239A92E300751531 /* AuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewController.swift; sourceTree = "<group>"; };
+		3810F622239ACB7200751531 /* QuizzFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzFinishedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				2A0D0886236B239F00BE548A /* AppDelegate.swift */,
 				2A0D0888236B239F00BE548A /* ViewController.swift */,
 				2A0D088A236B239F00BE548A /* Main.storyboard */,
+				3810F622239ACB7200751531 /* QuizzFinishedViewController.swift */,
 				2A0D088D236B23A200BE548A /* Assets.xcassets */,
 				2A0D088F236B23A200BE548A /* LaunchScreen.storyboard */,
 				2A0D0892236B23A200BE548A /* Info.plist */,
@@ -118,6 +123,7 @@
 				2AA0C24A237EB95D00CBB3B0 /* TabBarViewController.swift */,
 				2AA0C250237EC53000CBB3B0 /* CreateQuizzViewController.swift */,
 				2AB482E7238FCC470040AD56 /* CreateQuestionViewController.swift */,
+				3810F620239A92E300751531 /* AuthorViewController.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 				TargetAttributes = {
 					2A0D0882236B239F00BE548A = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1120;
 					};
 					2A0D0896236B23A200BE548A = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -274,10 +281,12 @@
 				2AA0C251237EC53000CBB3B0 /* CreateQuizzViewController.swift in Sources */,
 				2A0D0889236B239F00BE548A /* ViewController.swift in Sources */,
 				2AA0C249237EB27C00CBB3B0 /* ListViewController2.swift in Sources */,
+				3810F623239ACB7200751531 /* QuizzFinishedViewController.swift in Sources */,
 				2AB482E8238FCC470040AD56 /* CreateQuestionViewController.swift in Sources */,
 				2A0D0887236B239F00BE548A /* AppDelegate.swift in Sources */,
 				2AA0C24B237EB95D00CBB3B0 /* TabBarViewController.swift in Sources */,
 				0845F520236B31DE00D85046 /* ListViewController.swift in Sources */,
+				3810F621239A92E300751531 /* AuthorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +459,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Client/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -458,6 +468,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LiKe.Client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Client-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -467,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Client/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -475,6 +488,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LiKe.Client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Client-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

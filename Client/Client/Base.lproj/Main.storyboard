@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +31,7 @@
             <objects>
                 <viewController id="T9r-Qc-hVI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mfk-Mo-sIh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5CO-ln-igr"/>
@@ -42,48 +40,87 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ks-ak-i8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1783" y="552"/>
+            <point key="canvasLocation" x="1590" y="908"/>
         </scene>
         <!--Create-->
         <scene sceneID="bQ3-Xj-gAg">
             <objects>
                 <viewController id="yvc-yb-DUO" customClass="CreateQuizzViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Xh-TU-r6k">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="C0o-El-Wtd"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Create" id="q9Y-pn-X6n"/>
                     <connections>
-                        <segue destination="VaD-3Y-5RD" kind="presentation" identifier="toCreateQuestion" id="Waz-4W-bHa"/>
+                        <segue destination="VaD-3Y-5RD" kind="presentation" identifier="toCreateAuthor" id="Waz-4W-bHa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afv-Nb-79T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2547" y="541"/>
         </scene>
-        <!--Create Question View Controller-->
+        <!--Author View Controller-->
         <scene sceneID="nC8-g4-HxD">
             <objects>
-                <viewController id="VaD-3Y-5RD" customClass="CreateQuestionViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VaD-3Y-5RD" customClass="AuthorViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gzK-jx-GIo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="f6S-eO-dt6"/>
                     </view>
+                    <connections>
+                        <segue destination="uvy-GH-dRh" kind="presentation" identifier="toCreateQuestion" id="t9L-V7-xGc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6K-6h-bN6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3279" y="540"/>
+        </scene>
+        <!--Create Question View Controller-->
+        <scene sceneID="5Jq-v4-C7Y">
+            <objects>
+                <viewController id="uvy-GH-dRh" customClass="CreateQuestionViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hag-fe-wu4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="SM4-kp-lTW"/>
+                    </view>
+                    <connections>
+                        <segue destination="PUJ-8D-FXP" kind="presentation" identifier="toQuizzFinished" id="pDs-DQ-5aI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vLS-1u-yxx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4089" y="539"/>
+        </scene>
+        <!--Quizz Finished View Controller-->
+        <scene sceneID="kfs-dv-ufI">
+            <objects>
+                <viewController id="PUJ-8D-FXP" customClass="QuizzFinishedViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oWc-ox-Z84">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="71n-9a-ztO"/>
+                    </view>
+                    <connections>
+                        <segue destination="tPa-P0-pJU" kind="presentation" identifier="finishedQuizzToHome" id="bph-xB-MFg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lii-GQ-nOb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4836" y="540"/>
         </scene>
         <!--All-->
         <scene sceneID="hWF-jj-ZvG">
             <objects>
                 <viewController id="J7s-3x-jgt" customClass="ListViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vcK-X2-6Wa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="lnf-Nm-Aze"/>
@@ -92,14 +129,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6c9-fv-RDe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="-102"/>
+            <point key="canvasLocation" x="2777" y="-130"/>
         </scene>
         <!--My Quizz-->
         <scene sceneID="yBV-jK-gjL">
             <objects>
                 <viewController id="dfB-sD-NKX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t6W-Au-Goc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aff-V9-XCZ"/>
@@ -108,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Id-hA-CBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2593" y="-278"/>
+            <point key="canvasLocation" x="2004" y="-660"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="gyB-Lq-Loi">
@@ -131,4 +168,7 @@
             <point key="canvasLocation" x="868" y="137"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bph-xB-MFg"/>
+    </inferredMetricsTieBreakers>
 </document>

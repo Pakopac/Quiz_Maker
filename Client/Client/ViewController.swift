@@ -45,7 +45,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     let email: UITextField = UITextField()
     let password: UITextField = UITextField()
-    let error: UILabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +54,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let helloView = UILabel()
         helloView.text = "Welcome to Quiz Maker"
         helloView.textAlignment = .center
+        helloView.font = helloView.font.withSize(30)
         
+        email.text = "test@supinternet.fr"
         email.backgroundColor = UIColor.white
         email.placeholder = "email"
         email.layer.cornerRadius = 10
@@ -64,14 +65,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         email.returnKeyType = UIReturnKeyType.next
         
         password.backgroundColor = UIColor.white
+        password.text = "supintertest"
         password.placeholder = "password"
         password.layer.cornerRadius = 10
         password.setLeftPaddingPoints(10)
         password.isSecureTextEntry = true
         password.delegate = self as! UITextFieldDelegate
         password.returnKeyType = UIReturnKeyType.done
-        
-        error.textColor = UIColor.red
         
         let button = UIButton()
         button.setTitle("Connect",for: .normal)
@@ -83,10 +83,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         self.view.backgroundColor = UIColor.gray
         self.view.grid(child:nView, x: 0, y: 2, height: 4, width: 12)
-        nView.grid(child: helloView, x: 3, y: 2, height: 4, width: 6)
+        nView.grid(child: helloView, x: 1, y: 2, height: 4, width: 10)
         self.view.grid(child:email, x: 2, y: 5, height: 0.5, width: 8)
         self.view.grid(child:password, x: 2, y: 6, height: 0.5, width: 8)
-        self.view.grid(child:error, x: 3, y: 8, height: 0.5, width: 8)
         self.view.grid(child:button, x: 4, y: 7, height: 0.5, width: 4)
         
     }
@@ -129,7 +128,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                 })
                             }
                             else{
-                                self.error.text = "token failed"
+                                self.showToast(message: "Token Failed", color: UIColor.red)
                             }
                         }
                         catch let error as NSError{
@@ -140,7 +139,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
                 else{
                     DispatchQueue.main.async(execute: {
-                        self.error.text = "Invalid email or password"
+                        self.showToast(message: "Invalid email or password", color: UIColor.red)
                     })
                 }
                 
@@ -150,6 +149,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
         task.resume()
+    }
+    func showToast(message : String, color : UIColor) {
+
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 120, y: self.view.frame.size.height-100, width: 250, height: 35))
+        toastLabel.backgroundColor = color
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = toastLabel.font.withSize(15)
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+             toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
     
 }
