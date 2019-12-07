@@ -45,6 +45,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     let email: UITextField = UITextField()
     let password: UITextField = UITextField()
+    let name: UITextField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         helloView.text = "Welcome to Quiz Maker"
         helloView.textAlignment = .center
         helloView.font = helloView.font.withSize(30)
+        
+        name.backgroundColor = UIColor.white
+        name.placeholder = "name"
+        name.layer.cornerRadius = 10
+        name.setLeftPaddingPoints(10)
+        name.delegate = self as! UITextFieldDelegate
+        name.returnKeyType = UIReturnKeyType.next
         
         email.text = "test@supinternet.fr"
         email.backgroundColor = UIColor.white
@@ -84,9 +92,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor.gray
         self.view.grid(child:nView, x: 0, y: 2, height: 4, width: 12)
         nView.grid(child: helloView, x: 1, y: 2, height: 4, width: 10)
-        self.view.grid(child:email, x: 2, y: 5, height: 0.5, width: 8)
-        self.view.grid(child:password, x: 2, y: 6, height: 0.5, width: 8)
-        self.view.grid(child:button, x: 4, y: 7, height: 0.5, width: 4)
+        self.view.grid(child:name, x: 2, y: 5, height: 0.5, width: 8)
+        self.view.grid(child:email, x: 2, y: 6, height: 0.5, width: 8)
+        self.view.grid(child:password, x: 2, y: 7, height: 0.5, width: 8)
+        self.view.grid(child:button, x: 4, y: 8, height: 0.5, width: 4)
         
     }
     
@@ -109,7 +118,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             do {
                 let responseJSON = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                 let response = response as? HTTPURLResponse
-                if(response?.statusCode == 200){
+                if(response?.statusCode == 200 && self.name.text != ""){
                     let data = responseJSON["data"] as! [String:Any]
                     let token = data["token"] as! String
                     
@@ -124,6 +133,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             let response = response as? HTTPURLResponse
                             if(response?.statusCode ==  200){
                                 DispatchQueue.main.async(execute: {
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(self.name.text!, forKey: "name")
                                     self.performSegue(withIdentifier: "ShowSecondVIew", sender: nil)
                                 })
                             }
@@ -139,7 +150,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
                 else{
                     DispatchQueue.main.async(execute: {
-                        self.showToast(message: "Invalid email or password", color: UIColor.red)
+                        self.showToast(message: "Invalid name or email or password", color: UIColor.red)
                     })
                 }
                 

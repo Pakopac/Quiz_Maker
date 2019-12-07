@@ -8,11 +8,12 @@
 
 import UIKit
 
-var id_quizz = 0
 
 let inputTheme = UITextField()
 
 class CreateQuizzViewController: UIViewController {
+    
+    var id_quizz = 0
     
     override func viewDidLoad() {
         let nView = UIView()
@@ -44,20 +45,52 @@ class CreateQuizzViewController: UIViewController {
         nView.grid(child: button, x: 4, y: 6, height: 1.5, width: 4)
 
     }
-    
-    @objc func redirectToQuestion(sender:UIButton) {
-        var theme = inputTheme.text!
-        print(theme)
-        if((theme) != ""){
-         self.performSegue(withIdentifier: "toCreateAuthor", sender: nil)
-                       
+    @objc func redirectToQuestion() {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        print(formatter.string(from: date))
+        
+        let defaults = UserDefaults.standard
+         let author = defaults.string(forKey: "name")
+        if(inputTheme.text != ""){
+            let json: [String:Any] = [
+                "name": inputTheme.text,
+                "author": author,
+                "date": formatter.string(from: date)
+             
+            ]
+                    
+            let jsonData = try? JSONSerialization.data(withJSONObject: json)
+            
+            let url = URL(string: "http://127.0.0.1:8000/api/quizzes")!
+            var request = URLRequest(url: url)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            request.httpBody = jsonData
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                do {
+                    let responseJSON = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                    print(responseJSON)
+                    DispatchQueue.main.async {
+                     let responseJSON = responseJSON
+                        self.id_quizz = responseJSON["id"] as! Int
+                        self.performSegue(withIdentifier: "toCreateQuestion", sender: nil)
+                    }
+                }
+                catch let error as NSError{
+                    print(error)
+                }
+            }
+            task.resume()
         }
         else{
             showToast(message: "Field must be filled", color: UIColor.red)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var vc = segue.destination as! AuthorViewController
+        var vc = segue.destination as! CreateQuestionViewController
         vc.theme = inputTheme.text ?? ""
         vc.id_quizz = id_quizz
     }
@@ -85,6 +118,7 @@ class CreateQuizzViewController: UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
+    
     
 
 }
