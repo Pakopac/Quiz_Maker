@@ -12,6 +12,7 @@ class ListViewController2: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.gray
     }
 
 }

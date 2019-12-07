@@ -29,10 +29,23 @@ extension UIView {
     }
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
+    }
     
     let email: UITextField = UITextField()
     let password: UITextField = UITextField()
+    let name: UITextField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,18 +55,30 @@ class ViewController: UIViewController {
         let helloView = UILabel()
         helloView.text = "Welcome to Quiz Maker"
         helloView.textAlignment = .center
+        helloView.font = helloView.font.withSize(30)
         
+        name.backgroundColor = UIColor.white
+        name.placeholder = "name"
+        name.layer.cornerRadius = 10
+        name.setLeftPaddingPoints(10)
+        name.delegate = self as! UITextFieldDelegate
+        name.returnKeyType = UIReturnKeyType.next
+        
+        email.text = "test@supinternet.fr"
         email.backgroundColor = UIColor.white
         email.placeholder = "email"
         email.layer.cornerRadius = 10
         email.setLeftPaddingPoints(10)
+        email.delegate = self as! UITextFieldDelegate
         email.returnKeyType = UIReturnKeyType.next
         
         password.backgroundColor = UIColor.white
+        password.text = "supintertest"
         password.placeholder = "password"
         password.layer.cornerRadius = 10
         password.setLeftPaddingPoints(10)
         password.isSecureTextEntry = true
+        password.delegate = self as! UITextFieldDelegate
         password.returnKeyType = UIReturnKeyType.done
         
         let button = UIButton()
@@ -66,10 +91,11 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.gray
         self.view.grid(child:nView, x: 0, y: 2, height: 4, width: 12)
-        nView.grid(child: helloView, x: 3, y: 2, height: 4, width: 6)
-        self.view.grid(child:email, x: 2, y: 5, height: 0.5, width: 8)
-        self.view.grid(child:password, x: 2, y: 6, height: 0.5, width: 8)
-        self.view.grid(child:button, x: 4, y: 7, height: 0.5, width: 4)
+        nView.grid(child: helloView, x: 1, y: 2, height: 4, width: 10)
+        self.view.grid(child:name, x: 2, y: 5, height: 0.5, width: 8)
+        self.view.grid(child:email, x: 2, y: 6, height: 0.5, width: 8)
+        self.view.grid(child:password, x: 2, y: 7, height: 0.5, width: 8)
+        self.view.grid(child:button, x: 4, y: 8, height: 0.5, width: 4)
         
     }
     
@@ -91,38 +117,67 @@ class ViewController: UIViewController {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             do {
                 let responseJSON = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
-                let data = responseJSON["data"] as! [String:Any]
-                let token = data["token"] as! String
-                
-                let urlToken = URL(string: "http://edu2.shareyourtime.fr/api/secret")!
-                var requestToken = URLRequest(url: urlToken)
-                requestToken.httpMethod = "POST"
-                let authValue: String? = "Bearer \(token)"
-                requestToken.setValue("Authorization", forHTTPHeaderField: authValue!)
-                
-                let taskToken = URLSession.shared.dataTask(with: requestToken) { data, response, error in
-                    do {
-                        let responseToken = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
-                      
-                      print("ok2")
-                      print(responseToken)
+                let response = response as? HTTPURLResponse
+                if(response?.statusCode == 200 && self.name.text != ""){
+                    let data = responseJSON["data"] as! [String:Any]
+                    let token = data["token"] as! String
+                    
+                    let urlToken = URL(string: "http://edu2.shareyourtime.fr/api/secret")!
+                    var requestToken = URLRequest(url: urlToken)
+                    let authValue: String? = "Bearer \(token)"
+                    requestToken.setValue(authValue!, forHTTPHeaderField:"Authorization")
+                    
+                    let taskToken = URLSession.shared.dataTask(with: requestToken) { data, response, error in
+                        do {
+                            let responseToken = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                            let response = response as? HTTPURLResponse
+                            if(response?.statusCode ==  200){
+                                DispatchQueue.main.async(execute: {
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(self.name.text!, forKey: "name")
+                                    self.performSegue(withIdentifier: "ShowSecondVIew", sender: nil)
+                                })
+                            }
+                            else{
+                                self.showToast(message: "Token Failed", color: UIColor.red)
+                            }
+                        }
+                        catch let error as NSError{
+                            print(error)
+                        }
                     }
-                    catch let error as NSError{
-                        print("ok")
-                        print(error)
-                    }
+                    taskToken.resume()
+                }
+                else{
+                    DispatchQueue.main.async(execute: {
+                        self.showToast(message: "Invalid name or email or password", color: UIColor.red)
+                    })
                 }
                 
-                taskToken.resume()
-                print(token)
             }
             catch let error as NSError{
                 print(error)
             }
         }
-        
         task.resume()
-        self.performSegue(withIdentifier: "ShowSecondVIew", sender: nil)
-    
     }
+    func showToast(message : String, color : UIColor) {
+
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 120, y: self.view.frame.size.height-100, width: 250, height: 35))
+        toastLabel.backgroundColor = color
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = toastLabel.font.withSize(15)
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+             toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+    
 }
