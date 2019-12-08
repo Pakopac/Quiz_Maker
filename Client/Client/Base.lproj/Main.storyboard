@@ -53,7 +53,22 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLe-uZ-A0I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2655" y="-319"/>
+            <point key="canvasLocation" x="2558" y="-316"/>
+        </scene>
+        <!--Do Quizz View Controller-->
+        <scene sceneID="Wat-lv-qxa">
+            <objects>
+                <viewController id="Hxg-EX-Ex3" customClass="DoQuizzViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uPJ-El-k21">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="r2R-wO-TmL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pcb-u4-sFI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4194" y="-316"/>
         </scene>
         <!--Create-->
         <scene sceneID="bQ3-Xj-gAg">
@@ -134,6 +149,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="All" id="ESO-55-azE"/>
+                    <connections>
+                        <segue destination="Hxg-EX-Ex3" kind="presentation" identifier="allToDoQuizz" id="Wk6-dv-8oD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JYF-tu-Oqv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,6 +11,7 @@ import UIKit
 class AllTableViewController: UITableViewController {
     
     var json = [[String : Any]]()
+    var id_quizz = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,19 +47,26 @@ class AllTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(json.count)
         return json.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllCell", for: indexPath)
-
         cell.textLabel?.text = json[indexPath.row]["name"] as! String
         cell.backgroundColor = UIColor.gray
-
-
         return cell
     }
+    	
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        id_quizz = json[indexPath.row]["id"] as! Int
+        self.performSegue(withIdentifier: "allToDoQuizz", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       var vc = segue.destination as! DoQuizzViewController
+       vc.id_quizz = self.id_quizz
+   }
+    
 
 }
