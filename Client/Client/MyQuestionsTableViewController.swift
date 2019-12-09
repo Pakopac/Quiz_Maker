@@ -16,6 +16,9 @@ class MyQuestionsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.reloadData()
+        
+        self.tableView.backgroundColor = UIColor.gray
         
         let url = URL(string: "http://127.0.0.1:8000/api/quizzes")!
           var request = URLRequest(url: url)

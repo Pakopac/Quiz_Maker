@@ -65,10 +65,76 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="r2R-wO-TmL"/>
                     </view>
+                    <connections>
+                        <segue destination="Qdw-QJ-nnR" kind="presentation" identifier="toScore" id="lbc-KV-hLR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcb-u4-sFI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4194" y="-316"/>
+        </scene>
+        <!--All scores-->
+        <scene sceneID="Ycd-Gi-7zu">
+            <objects>
+                <tableViewController id="P9G-mr-tBE" customClass="AllScoresTableViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2op-Of-0eX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllScoreCell" id="KYY-4a-hqJ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KYY-4a-hqJ" id="ie8-Ai-IDv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="P9G-mr-tBE" id="ZNu-i9-5nV"/>
+                            <outlet property="delegate" destination="P9G-mr-tBE" id="Nzb-mL-3jZ"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="All scores" id="NKj-3D-xDi"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hc8-hk-5NF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6225" y="40"/>
+        </scene>
+        <!--My score-->
+        <scene sceneID="ZF5-Mq-Qwi">
+            <objects>
+                <viewController id="mZl-o2-sbo" customClass="MyScoreViewController" customModule="Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O53-uY-CWY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="hw5-46-47d"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My score" id="hX5-C8-W4g"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HG6-Td-N1S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6226" y="-653"/>
+        </scene>
+        <!--Score View Controller-->
+        <scene sceneID="T56-LA-tL6">
+            <objects>
+                <tabBarController id="Qdw-QJ-nnR" customClass="ScoreViewController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h80-fg-PuD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="mZl-o2-sbo" kind="relationship" relationship="viewControllers" id="m5a-wc-efU"/>
+                        <segue destination="P9G-mr-tBE" kind="relationship" relationship="viewControllers" id="qx2-hw-Kig"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DD7-Ya-nAn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5273" y="-320"/>
         </scene>
         <!--Create-->
         <scene sceneID="bQ3-Xj-gAg">

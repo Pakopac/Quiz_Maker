@@ -21,6 +21,9 @@
 		2AB482E8238FCC470040AD56 /* CreateQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB482E7238FCC470040AD56 /* CreateQuestionViewController.swift */; };
 		380D401D239D307E002E0E91 /* DoQuizzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380D401C239D307E002E0E91 /* DoQuizzViewController.swift */; };
 		3810F623239ACB7200751531 /* QuizzFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3810F622239ACB7200751531 /* QuizzFinishedViewController.swift */; };
+		38648A71239E7A15006F7857 /* MyScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38648A70239E7A15006F7857 /* MyScoreViewController.swift */; };
+		38648A73239E7B33006F7857 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38648A72239E7B33006F7857 /* ScoreViewController.swift */; };
+		38A19BAB239E88B900D6843B /* AllScoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A19BAA239E88B900D6843B /* AllScoresTableViewController.swift */; };
 		38FE8B05239BBEFF00F52451 /* AllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FE8B04239BBEFF00F52451 /* AllTableViewController.swift */; };
 		38FE8B07239BDF0300F52451 /* doneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FE8B06239BDF0300F52451 /* doneTableViewController.swift */; };
 		38FE8B09239BE9A600F52451 /* MyQuestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FE8B08239BE9A600F52451 /* MyQuestionsTableViewController.swift */; };
@@ -64,6 +67,9 @@
 		2AB482E7238FCC470040AD56 /* CreateQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuestionViewController.swift; sourceTree = "<group>"; };
 		380D401C239D307E002E0E91 /* DoQuizzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoQuizzViewController.swift; sourceTree = "<group>"; };
 		3810F622239ACB7200751531 /* QuizzFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzFinishedViewController.swift; sourceTree = "<group>"; };
+		38648A70239E7A15006F7857 /* MyScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScoreViewController.swift; sourceTree = "<group>"; };
+		38648A72239E7B33006F7857 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		38A19BAA239E88B900D6843B /* AllScoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllScoresTableViewController.swift; sourceTree = "<group>"; };
 		38FE8B04239BBEFF00F52451 /* AllTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTableViewController.swift; sourceTree = "<group>"; };
 		38FE8B06239BDF0300F52451 /* doneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = doneTableViewController.swift; sourceTree = "<group>"; };
 		38FE8B08239BE9A600F52451 /* MyQuestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionsTableViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 				2A0D0886236B239F00BE548A /* AppDelegate.swift */,
 				2A0D0888236B239F00BE548A /* ViewController.swift */,
 				2A0D088A236B239F00BE548A /* Main.storyboard */,
+				38648A72239E7B33006F7857 /* ScoreViewController.swift */,
 				3810F622239ACB7200751531 /* QuizzFinishedViewController.swift */,
 				2A0D088D236B23A200BE548A /* Assets.xcassets */,
 				2A0D088F236B23A200BE548A /* LaunchScreen.storyboard */,
@@ -133,6 +140,8 @@
 				38FE8B06239BDF0300F52451 /* doneTableViewController.swift */,
 				38FE8B08239BE9A600F52451 /* MyQuestionsTableViewController.swift */,
 				380D401C239D307E002E0E91 /* DoQuizzViewController.swift */,
+				38648A70239E7A15006F7857 /* MyScoreViewController.swift */,
+				38A19BAA239E88B900D6843B /* AllScoresTableViewController.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -294,10 +303,13 @@
 				38FE8B07239BDF0300F52451 /* doneTableViewController.swift in Sources */,
 				3810F623239ACB7200751531 /* QuizzFinishedViewController.swift in Sources */,
 				2AB482E8238FCC470040AD56 /* CreateQuestionViewController.swift in Sources */,
+				38648A73239E7B33006F7857 /* ScoreViewController.swift in Sources */,
+				38A19BAB239E88B900D6843B /* AllScoresTableViewController.swift in Sources */,
 				38FE8B05239BBEFF00F52451 /* AllTableViewController.swift in Sources */,
 				2A0D0887236B239F00BE548A /* AppDelegate.swift in Sources */,
 				2AA0C24B237EB95D00CBB3B0 /* TabBarViewController.swift in Sources */,
 				0845F520236B31DE00D85046 /* ListViewController.swift in Sources */,
+				38648A71239E7A15006F7857 /* MyScoreViewController.swift in Sources */,
 				38FE8B09239BE9A600F52451 /* MyQuestionsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
